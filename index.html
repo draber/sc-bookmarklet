@@ -74,11 +74,11 @@
             document.querySelector('#config-form').addEventListener('submit', (e) => {
                 e.preventDefault();
                 e.stopPropagation();
-                const data = {
+                window.opener.postMessage({
                     version: versionSelect.value,
-                    user: userSelect.value
-                };
-                window.opener.postMessage(data, '*');
+                    user: userSelect.value,
+                    color: document.querySelector('#color').value
+                }, '*');
             });
         }());
         </script>
